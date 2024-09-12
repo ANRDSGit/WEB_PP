@@ -1,7 +1,8 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const Patient = require('../models/Patients'); // Ensure the path is correct
+const Patient = require('../models/Patients');
+const Appointment = require('../models/Appointments'); // Ensure the path is correct
 
 const router = express.Router();
 const SECRET_KEY = "secret"; // Use a strong, consistent secret key
@@ -39,7 +40,7 @@ router.post('/login', async (req, res) => {
     if (!isMatch) return res.status(400).send('Invalid name or password');
 
     // Generate JWT and send it
-    const token = jwt.sign({ id: patient._id }, SECRET_KEY, { expiresIn: '1h' });
+    const token = jwt.sign({ id: patient._id, name: patient.name }, SECRET_KEY, { expiresIn: '1h' });
     res.status(200).json({ token, message: 'Login successful' });
   } catch (error) {
     res.status(500).json({ error: 'Server error' });
@@ -93,4 +94,69 @@ router.delete('/delete-account', authenticateToken, async (req, res) => {
   }
 });
 
+// Create Appointment
+router.post('/appointments', authenticateToken, async (req, res) => {
+  const { date, time, appointmentType } = req.body;
+
+  // Validate appointmentType and required fields
+  if (!['physical', 'remote'].includes(appointmentType)) {
+    return res.status(400).json({ message: 'Invalid appointment type' });
+  }
+  if (!date || !time) {
+    return res.status(400).json({ message: 'Date and time are required' });
+  }
+
+  try {
+    const appointment = new Appointment({
+      patientId: req.patient.id, // Automatically associate with logged-in user
+      patientName: req.patient.name, // Get patientName from token
+      date,
+      time,
+      appointmentType,
+    });
+
+    await appointment.save();
+    res.status(201).json(appointment);
+  } catch (error) {
+    res.status(500).json({ error: 'Error creating appointment' });
+  }
+});
+
+// Get All Appointments for Logged-in User
+router.get('/appointments/user', authenticateToken, async (req, res) => {
+  try {
+    const appointments = await Appointment.find({ patientName: req.patient.name });
+    res.status(200).json(appointments);
+  } catch (error) {
+    res.status(500).json({ error: 'Error fetching appointments' });
+  }
+});
+
+// Search Appointments by Patient Name
+router.get('/appointments/search/:patientName', authenticateToken, async (req, res) => {
+  const appointments = await Appointment.find({
+    patientName: new RegExp(req.params.patientName, 'i'),
+  });
+  res.send(appointments);
+});
+
+// Update Appointment
+router.put('/appointments/:id', authenticateToken, async (req, res) => {
+  try {
+    const appointment = await Appointment.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    res.status(200).json(appointment);
+  } catch (error) {
+    res.status(500).json({ error: 'Error updating appointment' });
+  }
+});
+
+// Delete an appointment
+router.delete('/appointments/:id', authenticateToken, async (req, res) => {
+  try {
+    await Appointment.findByIdAndDelete(req.params.id);
+    res.status(204).send();
+  } catch (error) {
+    res.status(500).json({ error: 'Error deleting appointment' });
+  }
+});
 module.exports = router;
