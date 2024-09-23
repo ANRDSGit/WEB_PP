@@ -1,6 +1,16 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Container, TextField, Button, Typography, Select, MenuItem, InputLabel, FormControl } from '@mui/material';
+import {
+  Container,
+  TextField,
+  Button,
+  Typography,
+  Select,
+  MenuItem,
+  InputLabel,
+  FormControl,
+  Box,
+} from '@mui/material';
 import axios from 'axios';
 
 const SignIn = () => {
@@ -23,17 +33,8 @@ const SignIn = () => {
   };
 
   const handleSubmit = async (e) => {
-
     e.preventDefault();
     try {
-
-      console.log("Sign Up Attempt:", {
-        name: formData.name,
-        age: formData.age,
-        gender: formData.gender,
-        bloodGroup: formData.bloodGroup,
-        password: formData.password  // Not recommended for production environments
-      });
       // Ensure age is a number
       const updatedFormData = { ...formData, age: Number(formData.age) };
 
@@ -49,77 +50,92 @@ const SignIn = () => {
   };
 
   return (
-    <Container>
-      <Typography variant="h4" gutterBottom>
-        Sign Up
-      </Typography>
-
-      {error && (
-        <Typography color="error" gutterBottom>
-          {error}
-        </Typography>
-      )}
-
-      <form onSubmit={handleSubmit}>
-        <TextField
-          label="Name"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          fullWidth
-          required
-          margin="normal"
-        />
-
-        <TextField
-          label="Age"
-          name="age"
-          value={formData.age}
-          onChange={handleChange}
-          fullWidth
-          required
-          margin="normal"
-          type="number" // Ensure the age field is a number input
-        />
-
-        <FormControl fullWidth margin="normal" required>
-          <InputLabel id="gender-label">Gender</InputLabel>
-          <Select
-            labelId="gender-label"
-            name="gender"
-            value={formData.gender}
-            onChange={handleChange}
-          >
-            <MenuItem value="Male">Male</MenuItem>
-            <MenuItem value="Female">Female</MenuItem>
-          </Select>
-        </FormControl>
-
-        <TextField
-          label="Blood Group"
-          name="bloodGroup"
-          value={formData.bloodGroup}
-          onChange={handleChange}
-          fullWidth
-          required
-          margin="normal"
-        />
-
-        <TextField
-          label="Password"
-          type="password"
-          name="password"
-          value={formData.password}
-          onChange={handleChange}
-          fullWidth
-          required
-          margin="normal"
-        />
-
-        <Button type="submit" variant="contained" color="primary" fullWidth>
+    <Container maxWidth="xs" sx={{ mt: 4 }}>
+      <Box
+        sx={{
+          padding: 3,
+          backgroundColor: '#ffffff', // Set background color to white
+          borderRadius: 2, // Rounded corners
+          boxShadow: 3, // Shadow effect
+        }}
+      >
+        <Typography variant="h4" gutterBottom align="center">
           Sign Up
-        </Button>
-      </form>
+        </Typography>
+
+        {error && (
+          <Typography color="error" gutterBottom align="center">
+            {error}
+          </Typography>
+        )}
+
+        <form onSubmit={handleSubmit}>
+          <TextField
+            label="Name"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            fullWidth
+            required
+            margin="normal"
+          />
+
+          <TextField
+            label="Age"
+            name="age"
+            value={formData.age}
+            onChange={handleChange}
+            fullWidth
+            required
+            margin="normal"
+            type="number" // Ensure the age field is a number input
+          />
+
+          <FormControl fullWidth margin="normal" required>
+            <InputLabel id="gender-label">Gender</InputLabel>
+            <Select
+              labelId="gender-label"
+              name="gender"
+              value={formData.gender}
+              onChange={handleChange}
+            >
+              <MenuItem value="Male">Male</MenuItem>
+              <MenuItem value="Female">Female</MenuItem>
+            </Select>
+          </FormControl>
+
+          <TextField
+            label="Blood Group"
+            name="bloodGroup"
+            value={formData.bloodGroup}
+            onChange={handleChange}
+            fullWidth
+            required
+            margin="normal"
+          />
+
+          <TextField
+            label="Password"
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            fullWidth
+            required
+            margin="normal"
+          />
+
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            fullWidth
+            sx={{ mt: 2 }}
+          >
+            Sign Up
+          </Button>
+        </form>
+      </Box>
     </Container>
   );
 };

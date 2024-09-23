@@ -15,10 +15,10 @@ const Hero = () => {
         color: 'black',
       }}
     >
-      <Typography variant="h2" gutterBottom>
+      <Typography variant="h1" gutterBottom>
         Your Healthy Is Our Priority.
       </Typography>
-      <Typography variant="h5" gutterBottom>
+      <Typography variant="h4" gutterBottom>
         We care about your health and well-being.
       </Typography>
       <Button variant="contained" color="primary" size="large">

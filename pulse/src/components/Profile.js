@@ -43,7 +43,7 @@ const Profile = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('token'); // Remove token to logout
-    navigate('/'); // Redirect to home page
+    navigate('/Login'); // Redirect to home page
   };
 
   const handleResetPassword = async () => {
@@ -68,7 +68,7 @@ const Profile = () => {
         headers: { Authorization: `Bearer ${token}` },
       });
       localStorage.removeItem('token'); // Remove token after account deletion
-      navigate('/'); // Redirect to home page
+      navigate('/Signup'); // Redirect to home page
     } catch (error) {
       console.error('Error deleting account', error);
     }

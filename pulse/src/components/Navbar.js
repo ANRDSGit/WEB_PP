@@ -33,6 +33,7 @@ const Navbar = () => {
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           Patient Pulse
         </Typography>
+        <Button color="inherit" onClick={() => navigate('/Hero')}>Home</Button>
         <Button color="inherit" onClick={() => navigate('/appointments')}>Appointments</Button>
         <Button color="inherit" onClick={() => navigate('/pharmacy')}>Pharmacy</Button>
         <Button color="inherit" onClick={() => navigate('/conference')}>Conference</Button>

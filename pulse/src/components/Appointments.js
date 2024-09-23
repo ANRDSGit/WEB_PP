@@ -1,10 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Box, Typography, Button, TextField, CircularProgress, Modal, Grid, MenuItem, Fade, Backdrop, Paper } from '@mui/material';
+import {
+  Box,
+  Typography,
+  Button,
+  TextField,
+  CircularProgress,
+  Modal,
+  Grid,
+  MenuItem,
+  Fade,
+  Backdrop,
+  Paper,
+  Card,
+  CardContent,
+} from '@mui/material';
 import { Calendar, dateFnsLocalizer } from 'react-big-calendar';
 import { format, parse, startOfWeek, getDay } from 'date-fns';
-import 'react-big-calendar/lib/css/react-big-calendar.css';
+import { Add } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
+import 'react-big-calendar/lib/css/react-big-calendar.css';
 
 const locales = {
   'en-US': require('date-fns/locale/en-US'),
@@ -144,7 +159,7 @@ const Appointments = () => {
       {loading ? (
         <CircularProgress />
       ) : (
-        <>
+        <Box sx={{ boxShadow: 3, borderRadius: 3, overflow: 'hidden', padding: 2 }}>
           <Calendar
             localizer={localizer}
             events={appointments.map((appointment) => ({
@@ -158,9 +173,14 @@ const Appointments = () => {
             style={{ height: 500, margin: '50px 0' }}
             onSelectEvent={handleSelectAppointment}
           />
+        </Box>
+      )}
 
-          <Typography variant="h6">Create Appointment</Typography>
-          <Grid container spacing={2}>
+      {/* Modal for Creating Appointment */}
+      <Card sx={{ mt: 4, p: 2, boxShadow: 4, borderRadius: 2 }}>
+        <CardContent>
+          <Typography variant="h6">Create New Appointment</Typography>
+          <Grid container spacing={2} sx={{ mt: 1 }}>
             <Grid item xs={12} md={4}>
               <TextField
                 label="Date"
@@ -214,6 +234,7 @@ const Appointments = () => {
             </Grid>
           </Grid>
           <Button
+            startIcon={<Add />}
             variant="contained"
             onClick={handleCreate}
             disabled={loading}
@@ -221,109 +242,107 @@ const Appointments = () => {
           >
             Create Appointment
           </Button>
+        </CardContent>
+      </Card>
 
-          {selectedAppointment && (
-            <Modal
-              open={openModal}
-              onClose={() => setOpenModal(false)}
-              closeAfterTransition
-              BackdropComponent={Backdrop}
-              BackdropProps={{
-                timeout: 500,
-                sx: { backgroundColor: 'rgba(0, 0, 0, 0.04)' },
+      {selectedAppointment && (
+        <Modal
+          open={openModal}
+          onClose={() => setOpenModal(false)}
+          closeAfterTransition
+          BackdropComponent={Backdrop}
+          BackdropProps={{
+            timeout: 500,
+            sx: { backgroundColor: 'rgba(0, 0, 0, 0.04)' },
+          }}
+        >
+          <Fade in={openModal}>
+            <Paper
+              elevation={5}
+              sx={{
+                padding: 4,
+                margin: 'auto',
+                maxWidth: 500,
+                mt: 10,
+                borderRadius: 2,
               }}
             >
-              <Fade in={openModal}>
-                <Paper
-                  elevation={5}
-                  sx={{
-                    padding: 4,
-                    margin: 'auto',
-                    maxWidth: 500,
-                    mt: 10,
-                    borderRadius: 2,
-                  }}
-                >
-                  <Typography variant="h5" gutterBottom>
-                    Edit Appointment
-                  </Typography>
-                  <Grid container spacing={2}>
-                    <Grid item xs={12}>
-                      <TextField
-                        label="Date"
-                        type="date"
-                        value={selectedAppointment.date || ''}
-                        onChange={(e) =>
-                          setSelectedAppointment({
-                            ...selectedAppointment,
-                            date: e.target.value,
-                          })
-                        }
-                        fullWidth
-                        InputLabelProps={{
-                          shrink: true,
-                        }}
-                      />
-                    </Grid>
-                    <Grid item xs={12}>
-                      <TextField
-                        label="Time"
-                        type="time"
-                        value={selectedAppointment.time || ''}
-                        onChange={(e) =>
-                          setSelectedAppointment({
-                            ...selectedAppointment,
-                            time: e.target.value,
-                          })
-                        }
-                        fullWidth
-                        InputLabelProps={{
-                          shrink: true,
-                        }}
-                      />
-                    </Grid>
-                    <Grid item xs={12}>
-                      <TextField
-                        select
-                        label="Appointment Type"
-                        value={selectedAppointment.appointmentType || ''}
-                        onChange={(e) =>
-                          setSelectedAppointment({
-                            ...selectedAppointment,
-                            appointmentType: e.target.value,
-                          })
-                        }
-                        fullWidth
-                      >
-                        <MenuItem value="physical">Physical</MenuItem>
-                        <MenuItem value="remote">Remote</MenuItem>
-                      </TextField>
-                    </Grid>
-                  </Grid>
-
-                  <Box
-                    sx={{ display: 'flex', justifyContent: 'space-between', mt: 4 }}
+              <Typography variant="h5" gutterBottom>
+                Edit Appointment
+              </Typography>
+              <Grid container spacing={2}>
+                <Grid item xs={12}>
+                  <TextField
+                    label="Date"
+                    type="date"
+                    value={selectedAppointment.date || ''}
+                    onChange={(e) =>
+                      setSelectedAppointment({
+                        ...selectedAppointment,
+                        date: e.target.value,
+                      })
+                    }
+                    fullWidth
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    label="Time"
+                    type="time"
+                    value={selectedAppointment.time || ''}
+                    onChange={(e) =>
+                      setSelectedAppointment({
+                        ...selectedAppointment,
+                        time: e.target.value,
+                      })
+                    }
+                    fullWidth
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    select
+                    label="Appointment Type"
+                    value={selectedAppointment.appointmentType || ''}
+                    onChange={(e) =>
+                      setSelectedAppointment({
+                        ...selectedAppointment,
+                        appointmentType: e.target.value,
+                      })
+                    }
+                    fullWidth
                   >
-                    <Button
-                      variant="contained"
-                      color="primary"
-                      onClick={handleUpdate}
-                    >
-                      Update
-                    </Button>
-                    <Button
-                      variant="outlined"
-                      color="error"
-                      onClick={() => handleDelete(selectedAppointment._id)}
-                    >
-                      Delete
-                    </Button>
-                  </Box>
-                </Paper>
-              </Fade>
-            </Modal>
-          )}
-        </>
+                    <MenuItem value="physical">Physical</MenuItem>
+                    <MenuItem value="remote">Remote</MenuItem>
+                  </TextField>
+                </Grid>
+              </Grid>
+
+              <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 4 }}>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={handleUpdate}
+                >
+                  Update
+                </Button>
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  onClick={() => handleDelete(selectedAppointment._id)}
+                >
+                  Delete
+                </Button>
+              </Box>
+            </Paper>
+          </Fade>
+        </Modal>
       )}
 
       {error && <Typography color="error">{error}</Typography>}
