@@ -8,6 +8,8 @@ import SignIn from './components/Signup';
 import Login from './components/Login';
 import Appointments from './components/Appointments';
 import Profile from './components/Profile';
+import AboutUs from './components/AboutUs';
+import Contact from './components/Contact';
 
 function App() {
   return (
@@ -34,6 +36,10 @@ function App() {
           <Route path="/appointments" element={<Appointments />} />
 
           <Route path="/profile" element={<Profile />} />
+
+          <Route path="/AboutUs" element={<AboutUs/>} />
+          
+          <Route path="/Contact" element={<Contact/>} />
         </Routes>
 
         {/* Footer */}

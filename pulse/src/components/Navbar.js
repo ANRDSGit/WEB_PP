@@ -7,6 +7,7 @@ import IconButton from '@mui/material/IconButton';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import { useNavigate } from 'react-router-dom';
 
+
 const Navbar = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const navigate = useNavigate();
@@ -33,10 +34,12 @@ const Navbar = () => {
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           Patient Pulse
         </Typography>
-        <Button color="inherit" onClick={() => navigate('/Hero')}>Home</Button>
+        <Button color="inherit" onClick={() => navigate('/')}>Home</Button>
         <Button color="inherit" onClick={() => navigate('/appointments')}>Appointments</Button>
         <Button color="inherit" onClick={() => navigate('/pharmacy')}>Pharmacy</Button>
         <Button color="inherit" onClick={() => navigate('/conference')}>Conference</Button>
+        <Button color="inherit" onClick={() => navigate('/AboutUs')}>About Us</Button>
+        <Button color="inherit" onClick={() => navigate('/Contact')}>Contact Us</Button>
         
         {!isAuthenticated ? (
           <>
