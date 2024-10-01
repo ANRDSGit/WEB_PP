@@ -126,7 +126,7 @@ const Hero = () => {
           color="secondary"
           size="large"
           sx={{ mr: 2 }}
-          onClick={() => navigate('/about')}
+          onClick={() => navigate('/AboutUs')}
         >
           About Us
         </Button>
@@ -134,7 +134,7 @@ const Hero = () => {
           variant="outlined"
           color="primary"
           size="large"
-          onClick={() => navigate('/contact')}
+          onClick={() => navigate('/Contact')}
         >
           Contact Us
         </Button>
@@ -144,7 +144,7 @@ const Hero = () => {
         <Box sx={{ display: 'flex', justifyContent: 'space-around', my: 4, width: '100%' }}>
           <Box
             sx={{
-              backgroundColor: '#f5f5f5',
+              backgroundColor: '#8CF5AFFF',
               borderRadius: '8px',
               padding: '20px',
               boxShadow: 3,
@@ -160,7 +160,7 @@ const Hero = () => {
           </Box>
           <Box
             sx={{
-              backgroundColor: '#f5f5f5',
+              backgroundColor: '#8CF5AFFF',
               borderRadius: '8px',
               padding: '20px',
               boxShadow: 3,
@@ -175,7 +175,6 @@ const Hero = () => {
             <Typography variant="h6">Registered Members</Typography>
           </Box>
         </Box>
-
       </Box>
 
       
