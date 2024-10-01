@@ -13,7 +13,7 @@ const items = [
   {
     title: 'Natural Healing Methods',
     description: 'Using natural herbs and treatments for a balanced, healthy life.',
-    image: '/carousel2.jpg',
+    image: '/back2.jpg',
   },
   {
     title: 'Expert Ayurvedic Doctors',
@@ -54,7 +54,7 @@ const Hero = () => {
   return (
     <Box
       sx={{
-        height: '100vh',
+        height: '120vh',
         backgroundSize: 'cover',
         display: 'flex',
         flexDirection: 'column',
