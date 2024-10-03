@@ -13,16 +13,16 @@ import { useNavigate } from 'react-router-dom';
 // Sample team member data
 const teamMembers = [
   {
-    name: 'John Doe',
-    role: 'CEO & Founder',
+    name: 'Dr Sudarshini Roopasingha',
+    role: 'Doctor',
     image: '/path-to-image.jpg',
-    description: 'John has over 15 years of experience in the industry...',
+    description: 'Dr Sudarshini has over 20 years of experience in the industry...',
   },
   {
-    name: 'Jane Smith',
-    role: 'CTO',
+    name: 'Mr Ajith Wasantha peiris',
+    role: 'Assistace',
     image: '/path-to-image.jpg',
-    description: 'Jane leads the technical team with her extensive knowledge...',
+    description: 'He is the husband',
   },
   // Add more members as needed
 ];
@@ -38,7 +38,7 @@ const AboutUs = () => {
         sx={{
           width: '100%',
           height: { xs: '200px', md: '400px' },  // Adjust the height based on screen size
-          backgroundImage: 'url(/path-to-banner-image.jpg)',  // Replace with actual banner image path
+          backgroundImage: 'url(/back2)',  // Replace with actual banner image path
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           display: 'flex',

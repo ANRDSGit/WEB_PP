@@ -8,46 +8,46 @@ const items = [
   {
     title: 'Holistic Ayurvedic Care',
     description: 'We offer personalized, holistic care based on Ayurvedic principles.',
-    image: '/back.jpg',
+    image: '/back4.jpg',
   },
   {
     title: 'Natural Healing Methods',
     description: 'Using natural herbs and treatments for a balanced, healthy life.',
-    image: '/back2.jpg',
+    image: '/back3.jpg',
   },
   {
     title: 'Expert Ayurvedic Doctors',
     description: 'Our team of qualified Ayurvedic doctors ensures the best care.',
-    image: '/carousel3.jpg',
+    image: '/back.jpg',
   },
 ];
 
 // Sample news data with images
 const newsItems = [
   { 
-    title: 'Ayurvedic Workshop in November', 
+    title: 'The dispensary will be closed on 10/10/2024', 
     date: 'October 1, 2024', 
-    content: 'Join our upcoming workshop on holistic health.', 
+    content: 'sorry for the incovienevnce', 
     image: '/news1.jpg' // Replace with actual image path
   },
+  // { 
+  //   title: 'New Herbal Treatments Introduced', 
+  //   date: 'September 25, 2024', 
+  //   content: 'We’ve introduced new herbal remedies for stress relief.', 
+  //   image: '/news2.jpg' // Replace with actual image path
+  // },
   { 
-    title: 'New Herbal Treatments Introduced', 
-    date: 'September 25, 2024', 
-    content: 'We’ve introduced new herbal remedies for stress relief.', 
-    image: '/news2.jpg' // Replace with actual image path
-  },
-  { 
-    title: 'Grand Opening of Our New Branch', 
+    title: 'Kindly remember to bring your own bottles to store medication.', 
     date: 'September 15, 2024', 
-    content: 'We’re excited to announce the opening of our second branch.', 
+    content: '', 
     image: '/news3.jpg' // Replace with actual image path
   },
 ];
 
 // Sample initial reviews
 const initialReviews = [
-  { name: 'John Doe', rating: 4, comment: 'Great service and very professional!' },
-  { name: 'Jane Smith', rating: 5, comment: 'Amazing experience with natural healing methods.' },
+  { name: 'sandun', rating: 4, comment: 'Great service and very professional!' },
+  { name: 'latha', rating: 5, comment: 'Amazing experience with natural healing methods.' },
 ];
 
 const Hero = () => {

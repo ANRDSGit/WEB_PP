@@ -91,8 +91,7 @@ const ContactUs = () => {
               primary="Emails"
               secondary={
                 <>
-                  <Typography variant="body2">support@gymmanagement.com</Typography>
-                  <Typography variant="body2">info@gymmanagement.com</Typography>
+                  <Typography variant="body2">ajithp1968@gmail.com</Typography>
                 </>
               }
             />
@@ -107,8 +106,8 @@ const ContactUs = () => {
               primary="Contact Numbers"
               secondary={
                 <>
-                  <Typography variant="body2">+1 (123) 456-7890</Typography>
-                  <Typography variant="body2">+1 (987) 654-3210</Typography>
+                  <Typography variant="body2">+(94) 766474436 </Typography>
+                  <Typography variant="body2">+ (94) 762525511</Typography>
                 </>
               }
             />
