@@ -152,98 +152,104 @@ const Appointments = () => {
 
   return (
     <Box sx={{ padding: { xs: 2, md: 4 }, maxWidth: '1200px', margin: 'auto' }}>
-      <Typography variant="h4" gutterBottom>
-        Appointments
-      </Typography>
+      <Fade in={true} timeout={1000}>
+        <Typography variant="h4" gutterBottom>
+          Appointments
+        </Typography>
+      </Fade>
 
       {loading ? (
         <CircularProgress />
       ) : (
-        <Box sx={{ boxShadow: 3, borderRadius: 3, overflow: 'hidden', padding: 2 }}>
-          <Calendar
-            localizer={localizer}
-            events={appointments.map((appointment) => ({
-              title: `${appointment.patientName} - ${appointment.appointmentType}`,
-              start: new Date(appointment.date),
-              end: new Date(appointment.date),
-              _id: appointment._id, // Ensure each event carries the ID
-            }))}
-            startAccessor="start"
-            endAccessor="end"
-            style={{ height: 500, margin: '50px 0' }}
-            onSelectEvent={handleSelectAppointment}
-          />
-        </Box>
+        <Fade in={true} timeout={1500}>
+          <Box sx={{ boxShadow: 3, borderRadius: 3, overflow: 'hidden', padding: 2 }}>
+            <Calendar
+              localizer={localizer}
+              events={appointments.map((appointment) => ({
+                title: `${appointment.patientName} - ${appointment.appointmentType}`,
+                start: new Date(appointment.date),
+                end: new Date(appointment.date),
+                _id: appointment._id, // Ensure each event carries the ID
+              }))}
+              startAccessor="start"
+              endAccessor="end"
+              style={{ height: 500, margin: '50px 0' }}
+              onSelectEvent={handleSelectAppointment}
+            />
+          </Box>
+        </Fade>
       )}
 
       {/* Modal for Creating Appointment */}
-      <Card sx={{ mt: 4, p: 2, boxShadow: 4, borderRadius: 2 }}>
-        <CardContent>
-          <Typography variant="h6">Create New Appointment</Typography>
-          <Grid container spacing={2} sx={{ mt: 1 }}>
-            <Grid item xs={12} md={4}>
-              <TextField
-                label="Date"
-                type="date"
-                value={newAppointment.date}
-                onChange={(e) =>
-                  setNewAppointment({
-                    ...newAppointment,
-                    date: e.target.value,
-                  })
-                }
-                fullWidth
-                InputLabelProps={{
-                  shrink: true,
-                }}
-              />
+      <Fade in={true} timeout={2000}>
+        <Card sx={{ mt: 4, p: 2, boxShadow: 4, borderRadius: 2 }}>
+          <CardContent>
+            <Typography variant="h6">Create New Appointment</Typography>
+            <Grid container spacing={2} sx={{ mt: 1 }}>
+              <Grid item xs={12} md={4}>
+                <TextField
+                  label="Date"
+                  type="date"
+                  value={newAppointment.date}
+                  onChange={(e) =>
+                    setNewAppointment({
+                      ...newAppointment,
+                      date: e.target.value,
+                    })
+                  }
+                  fullWidth
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                />
+              </Grid>
+              <Grid item xs={12} md={4}>
+                <TextField
+                  label="Time"
+                  type="time"
+                  value={newAppointment.time}
+                  onChange={(e) =>
+                    setNewAppointment({
+                      ...newAppointment,
+                      time: e.target.value,
+                    })
+                  }
+                  fullWidth
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                />
+              </Grid>
+              <Grid item xs={12} md={4}>
+                <TextField
+                  select
+                  label="Appointment Type"
+                  value={newAppointment.appointmentType}
+                  onChange={(e) =>
+                    setNewAppointment({
+                      ...newAppointment,
+                      appointmentType: e.target.value,
+                    })
+                  }
+                  fullWidth
+                >
+                  <MenuItem value="physical">Physical</MenuItem>
+                  <MenuItem value="remote">Remote</MenuItem>
+                </TextField>
+              </Grid>
             </Grid>
-            <Grid item xs={12} md={4}>
-              <TextField
-                label="Time"
-                type="time"
-                value={newAppointment.time}
-                onChange={(e) =>
-                  setNewAppointment({
-                    ...newAppointment,
-                    time: e.target.value,
-                  })
-                }
-                fullWidth
-                InputLabelProps={{
-                  shrink: true,
-                }}
-              />
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <TextField
-                select
-                label="Appointment Type"
-                value={newAppointment.appointmentType}
-                onChange={(e) =>
-                  setNewAppointment({
-                    ...newAppointment,
-                    appointmentType: e.target.value,
-                  })
-                }
-                fullWidth
-              >
-                <MenuItem value="physical">Physical</MenuItem>
-                <MenuItem value="remote">Remote</MenuItem>
-              </TextField>
-            </Grid>
-          </Grid>
-          <Button
-            startIcon={<Add />}
-            variant="contained"
-            onClick={handleCreate}
-            disabled={loading}
-            sx={{ mt: 2 }}
-          >
-            Create Appointment
-          </Button>
-        </CardContent>
-      </Card>
+            <Button
+              startIcon={<Add />}
+              variant="contained"
+              onClick={handleCreate}
+              disabled={loading}
+              sx={{ mt: 2 }}
+            >
+              Create Appointment
+            </Button>
+          </CardContent>
+        </Card>
+      </Fade>
 
       {selectedAppointment && (
         <Modal
@@ -345,7 +351,11 @@ const Appointments = () => {
         </Modal>
       )}
 
-      {error && <Typography color="error">{error}</Typography>}
+      {error && (
+        <Fade in={true} timeout={500}>
+          <Typography color="error">{error}</Typography>
+        </Fade>
+      )}
     </Box>
   );
 };

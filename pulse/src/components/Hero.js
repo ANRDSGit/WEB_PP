@@ -98,6 +98,18 @@ const Hero = () => {
     setNewReview({ name: '', rating: 0, comment: '' }); // Clear the form
   };
 
+  // Adding external WhatsApp script for the widget
+  // useEffect(() => {
+  //   const script = document.createElement('script');
+  //   script.src = 'https://static.elfsight.com/platform/platform.js';
+  //   script.defer = true;
+  //   document.body.appendChild(script);
+
+  //   return () => {
+  //     document.body.removeChild(script); // Cleanup script on unmount
+  //   };
+  // }, []);
+
   return (
     <Box
       sx={{
@@ -337,6 +349,11 @@ const Hero = () => {
               <Button type="submit" variant="contained" color="primary" fullWidth>
                 Submit Review
               </Button>
+              
+              {/* WhatsApp Widget */}
+              {/* <div className="whatsapp">
+              <div class="elfsight-app-2b4acc96-4dfb-43e1-a80a-d30aeda0f86c" data-elfsight-app-lazy></div>
+              </div> */}
             </Box>
           </Box>
         </Box>

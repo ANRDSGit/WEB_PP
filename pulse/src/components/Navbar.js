@@ -28,6 +28,18 @@ const Navbar = () => {
     navigate('/login'); // Redirect to login page
   };
 
+  // Adding external WhatsApp script for the widget
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://static.elfsight.com/platform/platform.js';
+    script.defer = true;
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script); // Cleanup script on unmount
+    };
+  }, []);
+
   return (
     <AppBar position="static" style={{ background: '#1976d2' }}>
       <Toolbar>
@@ -56,7 +68,12 @@ const Navbar = () => {
           </IconButton>
         )}
       </Toolbar>
+      {/* WhatsApp Widget */}
+      <div className="whatsapp">
+              <div class="elfsight-app-2b4acc96-4dfb-43e1-a80a-d30aeda0f86c" data-elfsight-app-lazy></div>
+              </div>
     </AppBar>
+    
   );
 };
 
