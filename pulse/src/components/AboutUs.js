@@ -30,7 +30,7 @@ const teamMembers = [
 
 // Sample gallery images
 const galleryImages = [
-  '/gallery-image1.jpg',
+  '/pulse/public/img1.jpg',
   '/gallery-image2.jpg',
   '/gallery-image3.jpg',
   '/gallery-image4.jpg',

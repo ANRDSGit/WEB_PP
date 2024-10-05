@@ -46,8 +46,8 @@ const newsItems = [
 
 // Sample initial reviews
 const initialReviews = [
-  { name: 'sandun', rating: 4, comment: 'Great service and very professional!' },
-  { name: 'latha', rating: 5, comment: 'Amazing experience with natural healing methods.' },
+  { name: 'Sandun', rating: 4, comment: 'Great service and very professional!' },
+  { name: 'Latha', rating: 5, comment: 'Amazing experience with natural healing methods.' },
 ];
 
 const Hero = () => {
@@ -242,7 +242,7 @@ const Hero = () => {
       <Fade in={showSections} timeout={2000}>
         <Box sx={{ maxWidth: '800px', textAlign: 'center', mt: 6, p: 2, animation: 'slideUp 1s ease-out' }}>
           <Typography variant="h4" gutterBottom>
-            Latest News
+            Latest News & Updates
           </Typography>
           <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between' }}>
             {newsItems.map((news, index) => (

@@ -186,6 +186,7 @@ const ContactUs = () => {
               primary="Emails"
               secondary={
                 <>
+                  <Typography variant="body2">patientpulseinfo@gmail.com</Typography>
                   <Typography variant="body2">ajithp1968@gmail.com</Typography>
                 </>
               }
@@ -207,8 +208,8 @@ const ContactUs = () => {
               primary="Contact Numbers"
               secondary={
                 <>
-                  <Typography variant="body2">+(94) 766474436 </Typography>
-                  <Typography variant="body2">+ (94) 762525511</Typography>
+                  <Typography variant="body2">+(94) 76 647 4436 </Typography>
+                  <Typography variant="body2">+(94) 76 252 5511</Typography>
                 </>
               }
             />
