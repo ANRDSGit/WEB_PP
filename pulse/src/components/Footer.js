@@ -27,16 +27,16 @@ const Footer = () => {
               Quick Links
             </Typography>
             <Typography variant="body2" style={{ marginBottom: '10px' }}>
-              <Link href="/about" color="inherit" underline="hover">About Us</Link>
+              <Link href="/" color="inherit" underline="hover">- Home</Link>
             </Typography>
             <Typography variant="body2" style={{ marginBottom: '10px' }}>
-              <Link href="/services" color="inherit" underline="hover">Services</Link>
+              <Link href="/appointments" color="inherit" underline="hover">- Appoinments</Link>
             </Typography>
             <Typography variant="body2" style={{ marginBottom: '10px' }}>
-              <Link href="/contact" color="inherit" underline="hover">Contact</Link>
+              <Link href="/AboutUs" color="inherit" underline="hover">- About Us</Link>
             </Typography>
             <Typography variant="body2" style={{ marginBottom: '10px' }}>
-              <Link href="/faq" color="inherit" underline="hover">FAQs</Link>
+              <Link href="/Contact" color="inherit" underline="hover">- Contact Us</Link>
             </Typography>
           </Grid>
 
@@ -47,7 +47,7 @@ const Footer = () => {
             </Typography>
             <Typography variant="body2" style={{ color: '#bbb', marginBottom: '10px' }}>
               <Phone style={{ verticalAlign: 'middle', marginRight: '5px' }} />
-              (123) 456-7890
+              +(94) 76 647 4436
             </Typography>
             <Typography variant="body2" style={{ color: '#bbb', marginBottom: '20px' }}>
               <Email style={{ verticalAlign: 'middle', marginRight: '5px' }} />
