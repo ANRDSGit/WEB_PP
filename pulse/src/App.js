@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
+import Home from './components/Home';
 import Services from './components/Services';
 import Footer from './components/Footer';
 import SignIn from './components/Signup';
@@ -21,7 +21,7 @@ function App() {
         {/* Define Routes for navigation */}
         <Routes>
           {/* Home route */}
-          <Route path="/" element={<Hero />} />
+          <Route path="/" element={<Home />} />
           
           {/* Services route */}
           <Route path="/services" element={<Services />} />

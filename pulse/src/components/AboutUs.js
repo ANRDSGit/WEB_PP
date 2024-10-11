@@ -16,7 +16,7 @@ const teamMembers = [
   {
     name: 'Dr Sudarshini Roopasingha',
     role: 'Doctor',
-    image: '/path-to-image.jpg',
+    image: '/amma.jpg',
     description: 'Dr Sudarshini has over 20 years of experience in the industry...',
   },
   {
@@ -30,12 +30,12 @@ const teamMembers = [
 
 // Sample gallery images
 const galleryImages = [
-  '/pulse/public/img1.jpg',
-  '/gallery-image2.jpg',
-  '/gallery-image3.jpg',
-  '/gallery-image4.jpg',
-  '/gallery-image5.jpg',
-  '/gallery-image6.jpg',
+  '/img1.jpg',
+  '/img2.jpg',
+  '/img3.jpg',
+  '/img4.jpg',
+  '/img5.jpg',
+  '/img6.jpg',
   // Add more image paths as needed
 ];
 
@@ -60,7 +60,7 @@ const AboutUs = () => {
         sx={{
           width: '100%',
           height: { xs: '200px', md: '400px' },
-          backgroundImage: 'url(/back2)',
+          backgroundImage: 'url(/about_back.jpg)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           display: 'flex',

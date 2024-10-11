@@ -19,6 +19,8 @@ const SignIn = () => {
     age: '',
     gender: '',
     bloodGroup: '',
+    number:'',
+    email:'',
     password: ''
   });
 
@@ -108,6 +110,24 @@ const SignIn = () => {
             label="Blood Group"
             name="bloodGroup"
             value={formData.bloodGroup}
+            onChange={handleChange}
+            fullWidth
+            required
+            margin="normal"
+          />
+          <TextField
+            label="number"
+            name="number"
+            value={formData.number}
+            onChange={handleChange}
+            fullWidth
+            required
+            margin="normal"
+          />
+          <TextField
+            label="email"
+            name="email"
+            value={formData.email}
             onChange={handleChange}
             fullWidth
             required

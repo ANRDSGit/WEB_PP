@@ -9,7 +9,7 @@ const SECRET_KEY = "secret"; // Use a strong, consistent secret key
 
 // Patient Signup Route
 router.post('/signup', async (req, res) => {
-  const { name, age, gender, bloodGroup, password } = req.body;
+  const { name, age, gender, bloodGroup,number,email, password } = req.body;
 
   try {
     // Check if patient already exists
@@ -18,7 +18,7 @@ router.post('/signup', async (req, res) => {
 
     // Hash password before saving
     const hashedPassword = await bcrypt.hash(password, 10);
-    patient = new Patient({ name, age, gender, bloodGroup, password: hashedPassword });
+    patient = new Patient({ name, age, gender, bloodGroup,number,email, password: hashedPassword });
     await patient.save();
     res.status(201).send('Account created successfully');
   } catch (error) {

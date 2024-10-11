@@ -48,11 +48,14 @@ const Navbar = () => {
         </Typography>
         <Button color="inherit" onClick={() => navigate('/')}>Home</Button>
         <Button color="inherit" onClick={() => navigate('/appointments')}>Appointments</Button>
-        <Button color="inherit" onClick={() => navigate('/pharmacy')}>Pharmacy</Button>
-        <Button color="inherit" onClick={() => navigate('/conference')}>Conference</Button>
+        
+        <Button color="inherit" onClick={() => window.location.href = 'https://video-convo-one.vercel.app/mymeetings'}>
+          Conference
+        </Button>
+
         <Button color="inherit" onClick={() => navigate('/AboutUs')}>About Us</Button>
         <Button color="inherit" onClick={() => navigate('/Contact')}>Contact Us</Button>
-        
+
         {!isAuthenticated ? (
           <>
             <Button color="inherit" onClick={() => navigate('/signin')}>Sign Up</Button>
@@ -70,10 +73,10 @@ const Navbar = () => {
       </Toolbar>
       {/* WhatsApp Widget */}
       <div className="whatsapp">
-              <div class="elfsight-app-2b4acc96-4dfb-43e1-a80a-d30aeda0f86c" data-elfsight-app-lazy></div>
-              </div>
+        <div class="elfsight-app-2b4acc96-4dfb-43e1-a80a-d30aeda0f86c" data-elfsight-app-lazy></div>
+      </div>
     </AppBar>
-    
+
   );
 };
 

@@ -175,6 +175,12 @@ const Profile = () => {
           <Typography variant="body1">
             <strong>Blood Group:</strong> {patient.bloodGroup}
           </Typography>
+          <Typography variant="body1">
+            <strong>Email:</strong> {patient.email}
+          </Typography>
+          <Typography variant="body1">
+            <strong>Number:</strong> {patient.number}
+          </Typography>
         </Box>
 
         <Box sx={{ display: 'flex', justifyContent: 'center', mb: 4 }}>

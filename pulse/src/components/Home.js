@@ -27,20 +27,14 @@ const newsItems = [
   { 
     title: 'The dispensary will be closed on 10/10/2024', 
     date: 'October 1, 2024', 
-    content: 'sorry for the incovienevnce', 
-    image: '/news1.jpg' // Replace with actual image path
+    content: 'Sorry for the inconvenience.', 
+    image: '/news1.jpg' 
   },
-  // { 
-  //   title: 'New Herbal Treatments Introduced', 
-  //   date: 'September 25, 2024', 
-  //   content: 'We’ve introduced new herbal remedies for stress relief.', 
-  //   image: '/news2.jpg' // Replace with actual image path
-  // },
   { 
     title: 'Kindly remember to bring your own bottles to store medication.', 
     date: 'September 15, 2024', 
     content: '', 
-    image: '/news3.jpg' // Replace with actual image path
+    image: '/news3.jpg' 
   },
 ];
 
@@ -98,29 +92,22 @@ const Hero = () => {
     setNewReview({ name: '', rating: 0, comment: '' }); // Clear the form
   };
 
-  // Adding external WhatsApp script for the widget
-  // useEffect(() => {
-  //   const script = document.createElement('script');
-  //   script.src = 'https://static.elfsight.com/platform/platform.js';
-  //   script.defer = true;
-  //   document.body.appendChild(script);
-
-  //   return () => {
-  //     document.body.removeChild(script); // Cleanup script on unmount
-  //   };
-  // }, []);
-
   return (
     <Box
       sx={{
         height: '100%',
+        width: '100%', // Ensure full-width
+        backgroundImage: 'url("C:/Users/DELL/Desktop/WEB_PP/pulse/public/back3.jpg")', // Add your image path here
         backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
         color: 'black',
         padding: '20px',
+        backgroundColor: '#f0f0f0', // Fallback color
       }}
     >
       {/* Carousel Section */}
@@ -288,73 +275,66 @@ const Hero = () => {
       <Fade in={showSections} timeout={2500}>
         <Box sx={{ maxWidth: '800px', textAlign: 'center', mt: 6, p: 2, animation: 'slideUp 1s ease-out' }}>
           <Typography variant="h4" gutterBottom>
-            What Our Clients Say
+            Patient Reviews
           </Typography>
-          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
             {reviews.map((review, index) => (
-              <Box
+              <Paper
                 key={index}
+                elevation={3}
                 sx={{
-                  backgroundColor: '#e0f7fa',
-                  borderRadius: '8px',
-                  padding: '16px',
-                  boxShadow: 2,
-                  marginBottom: 2,
                   width: '100%',
-                  maxWidth: '400px',
+                  maxWidth: '300px',
+                  mb: 3,
+                  p: 3,
                   textAlign: 'left',
+                  backgroundColor: '#f9f9f9',
+                  mx: 1,
                 }}
               >
-                <Typography variant="h6">{review.name}</Typography>
+                <Typography variant="h6" gutterBottom>
+                  {review.name}
+                </Typography>
                 <Rating name="read-only" value={review.rating} readOnly />
-                <Typography variant="body2">{review.comment}</Typography>
-              </Box>
+                <Typography variant="body2" gutterBottom>
+                  {review.comment}
+                </Typography>
+              </Paper>
             ))}
+          </Box>
 
-            {/* Review Form */}
-            <Box
-              component="form"
-              onSubmit={(e) => {
-                e.preventDefault();
-                handleReviewSubmit();
-              }}
-              sx={{ width: '100%', maxWidth: '400px', mt: 4 }}
-            >
-              <TextField
-                label="Your Name"
-                variant="outlined"
-                fullWidth
-                value={newReview.name}
-                onChange={(e) => setNewReview({ ...newReview, name: e.target.value })}
-                sx={{ mb: 2 }}
-              />
-              <Rating
-                name="simple-controlled"
-                value={newReview.rating}
-                onChange={(event, newValue) => {
-                  setNewReview({ ...newReview, rating: newValue });
-                }}
-                sx={{ mb: 2 }}
-              />
-              <TextField
-                label="Your Review"
-                variant="outlined"
-                fullWidth
-                multiline
-                rows={4}
-                value={newReview.comment}
-                onChange={(e) => setNewReview({ ...newReview, comment: e.target.value })}
-                sx={{ mb: 2 }}
-              />
-              <Button type="submit" variant="contained" color="primary" fullWidth>
-                Submit Review
-              </Button>
-              
-              {/* WhatsApp Widget */}
-              {/* <div className="whatsapp">
-              <div class="elfsight-app-2b4acc96-4dfb-43e1-a80a-d30aeda0f86c" data-elfsight-app-lazy></div>
-              </div> */}
-            </Box>
+          {/* Review Submission Form */}
+          <Box sx={{ mt: 4 }}>
+            <Typography variant="h5" gutterBottom>
+              Submit a Review
+            </Typography>
+            <TextField
+              label="Your Name"
+              variant="outlined"
+              fullWidth
+              value={newReview.name}
+              onChange={(e) => setNewReview({ ...newReview, name: e.target.value })}
+              sx={{ mb: 2 }}
+            />
+            <Rating
+              name="new-review-rating"
+              value={newReview.rating}
+              onChange={(e, value) => setNewReview({ ...newReview, rating: value })}
+              sx={{ mb: 2 }}
+            />
+            <TextField
+              label="Your Review"
+              variant="outlined"
+              fullWidth
+              multiline
+              rows={4}
+              value={newReview.comment}
+              onChange={(e) => setNewReview({ ...newReview, comment: e.target.value })}
+              sx={{ mb: 2 }}
+            />
+            <Button variant="contained" color="primary" onClick={handleReviewSubmit}>
+              Submit
+            </Button>
           </Box>
         </Box>
       </Fade>
