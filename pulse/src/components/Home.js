@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Typography, Button, Box, Paper, TextField, Rating, Fade } from '@mui/material';
 import Carousel from 'react-material-ui-carousel';
 import { useNavigate } from 'react-router-dom';
+import ReactPlayer from 'react-player';
 
 // Sample data for carousel items
 const items = [
@@ -225,6 +226,31 @@ const Hero = () => {
         </Box>
       </Fade>
 
+       {/* Quote Section */}
+      <Fade in={showSections} timeout={3000}>
+        <Box sx={{ maxwidth:'100%', textAlign: 'center', mt: 6, p: 2, animation: 'slideUp 1s ease-out' }}>
+          <Paper
+            elevation={3}
+            sx={{
+              padding: '20px',
+              backgroundColor: '#f9f9f9',
+              textAlign: 'center',
+              width: '80%', // Increase width to 80% (or adjust as needed)
+              maxWidth: '1000px', // Maximum width of the Paper container
+              margin: 'auto',
+              animation: 'fadeIn 2s',
+            }}
+          >
+            <Typography variant="h4" gutterBottom>
+              "The natural healing force within each of us is the greatest force in getting well."
+            </Typography>
+            <Typography variant="subtitle1" color="textSecondary" gutterBottom>
+              - Hippocrates, Father of Medicine -
+            </Typography>
+          </Paper>
+        </Box>
+      </Fade>
+
       {/* News Section */}
       <Fade in={showSections} timeout={2000}>
         <Box sx={{ maxWidth: '800px', textAlign: 'center', mt: 6, p: 2, animation: 'slideUp 1s ease-out' }}>
@@ -338,6 +364,33 @@ const Hero = () => {
           </Box>
         </Box>
       </Fade>
+
+       {/* Video Section */}
+       <Fade in={showSections} timeout={1800}>
+        <Box
+          sx={{
+            width: '100%',
+            maxWidth: '700px',
+            textAlign: 'center',
+            mt: 6,
+            p: 2,
+            animation: 'slideUp 1s ease-out',
+          }}
+        >
+          <Typography variant="h4" gutterBottom>
+            Watch Our Ayurvedic Practices in Action
+          </Typography>
+          <ReactPlayer
+            url="https://youtu.be/KRAQpTCot3w?si=gC7PvNglzkb3baZW"
+            controls
+            width="100%"
+            height="400px"
+          />
+        </Box>
+      </Fade>
+
+      
+
     </Box>
   );
 };

@@ -14,6 +14,12 @@ import {
   Paper,
   Card,
   CardContent,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
 } from '@mui/material';
 import { Calendar, dateFnsLocalizer } from 'react-big-calendar';
 import { format, parse, startOfWeek, getDay } from 'date-fns';
@@ -40,7 +46,7 @@ const Appointments = () => {
     time: '',
     appointmentType: 'physical',
   });
-  const [selectedAppointment, setSelectedAppointment] = useState(null); // for selected appointment to edit
+  const [selectedAppointment, setSelectedAppointment] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [openModal, setOpenModal] = useState(false);
@@ -71,13 +77,9 @@ const Appointments = () => {
   const handleCreate = () => {
     setLoading(true);
     axios
-      .post(
-        'http://localhost:7000/api/auth/appointments',
-        newAppointment,
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      )
+      .post('http://localhost:7000/api/auth/appointments', newAppointment, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
       .then((res) => {
         setAppointments([...appointments, res.data]);
         setNewAppointment({ date: '', time: '', appointmentType: 'physical' });
@@ -150,6 +152,17 @@ const Appointments = () => {
       });
   };
 
+  // Opening hours data
+  const openingHours = [
+    { day: 'Monday', hours: '4:00 PM - 9:00 PM' },
+    { day: 'Tuesday', hours: '4:00 PM - 9:00 PM' },
+    { day: 'Wednesday', hours: '4:00 PM - 9:00 PM' },
+    { day: 'Thursday', hours: '4:00 PM - 9:00 PM' },
+    { day: 'Friday', hours: '4:00 PM - 9:00 PM' },
+    { day: 'Saturday', hours: '10:00 AM - 4:00 PM' },
+    { day: 'Sunday', hours: 'Closed' },
+  ];
+
   return (
     <Box sx={{ padding: { xs: 2, md: 4 }, maxWidth: '1200px', margin: 'auto' }}>
       <Fade in={true} timeout={1000}>
@@ -169,7 +182,7 @@ const Appointments = () => {
                 title: `${appointment.patientName} - ${appointment.appointmentType}`,
                 start: new Date(appointment.date),
                 end: new Date(appointment.date),
-                _id: appointment._id, // Ensure each event carries the ID
+                _id: appointment._id,
               }))}
               startAccessor="start"
               endAccessor="end"
@@ -356,6 +369,33 @@ const Appointments = () => {
           <Typography color="error">{error}</Typography>
         </Fade>
       )}
+
+      {/* Opening Hours Section */}
+      <Typography variant="h5" gutterBottom sx={{ mt: 4 }}>
+        Opening Hours
+      </Typography>
+
+      <TableContainer component={Paper} sx={{ maxWidth: 600, margin: 'left' }}>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>Day</TableCell>
+              <TableCell>Hours</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {openingHours.map((row, index) => (
+              <TableRow key={index}>
+                <TableCell component="th" scope="row">
+                  {row.day}
+                </TableCell>
+                <TableCell>{row.hours}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+
     </Box>
   );
 };
