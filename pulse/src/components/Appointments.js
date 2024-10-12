@@ -342,60 +342,61 @@ const Appointments = () => {
                   </TextField>
                 </Grid>
               </Grid>
-
-              <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 4 }}>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={handleUpdate}
-                >
-                  Update
-                </Button>
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  onClick={() => handleDelete(selectedAppointment._id)}
-                >
-                  Delete
-                </Button>
-              </Box>
+              <Button
+                variant="contained"
+                onClick={handleUpdate}
+                sx={{ mt: 2 }}
+              >
+                Update Appointment
+              </Button>
+              <Button
+                variant="outlined"
+                color="error"
+                onClick={() => handleDelete(selectedAppointment._id)}
+                sx={{ mt: 2, ml: 2 }}
+              >
+                Delete Appointment
+              </Button>
             </Paper>
           </Fade>
         </Modal>
       )}
 
-      {error && (
-        <Fade in={true} timeout={500}>
-          <Typography color="error">{error}</Typography>
-        </Fade>
-      )}
-
-      {/* Opening Hours Section */}
-      <Typography variant="h5" gutterBottom sx={{ mt: 4 }}>
-        Opening Hours
-      </Typography>
-
-      <TableContainer component={Paper} sx={{ maxWidth: 600, margin: 'left' }}>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>Day</TableCell>
-              <TableCell>Hours</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {openingHours.map((row, index) => (
-              <TableRow key={index}>
-                <TableCell component="th" scope="row">
-                  {row.day}
-                </TableCell>
-                <TableCell>{row.hours}</TableCell>
+      {/* Opening hours table */}
+      <Box sx={{ mt: 4 }}>
+        <Typography variant="h6" gutterBottom>
+          Opening Hours
+        </Typography>
+        <TableContainer
+          component={Paper}
+          sx={{
+            maxWidth: 600,
+            margin: 'left',
+            border: '3px solid',
+            borderColor: 'grey.300',
+            borderRadius: 2,
+          }}
+        >
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>Day</TableCell>
+                <TableCell>Hours</TableCell>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-
+            </TableHead>
+            <TableBody>
+              {openingHours.map((row, index) => (
+                <TableRow key={index}>
+                  <TableCell component="th" scope="row">
+                    {row.day}
+                  </TableCell>
+                  <TableCell>{row.hours}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Box>
     </Box>
   );
 };
