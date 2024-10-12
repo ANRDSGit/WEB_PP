@@ -1,8 +1,16 @@
 import React from 'react';
-import { Container, Typography, Grid, Link, IconButton, TextField, Button } from '@mui/material';
-import { Facebook, Twitter, Instagram, EmailOutlined, Schedule } from '@mui/icons-material';
+import { Container, Typography, Grid, Link, IconButton, TextField, Button, Fab } from '@mui/material';
+import { Facebook, Twitter, Instagram, EmailOutlined, Schedule, ArrowUpward } from '@mui/icons-material';
 
 const Footer = () => {
+  // Function to scroll to the top of the page
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <footer style={{ backgroundColor: '#2E3B55', padding: '40px 0', marginTop: '50px', color: '#fff' }}>
       <Container maxWidth="lg">
@@ -14,7 +22,7 @@ const Footer = () => {
               Patient Pulse
             </Typography>
             <Typography variant="body2" style={{ marginBottom: '10px', color: '#bbb' }}>
-            Providing excellent medical care since 2024. Our commitment to your health and well-being is unmatched.
+              Providing excellent medical care since 2024. Our commitment to your health and well-being is unmatched.
             </Typography>
             <div style={{ marginTop: '20px' }}>
               <IconButton href="#" target="_blank" style={{ color: '#fff' }}>
@@ -54,7 +62,7 @@ const Footer = () => {
               Open Hours
             </Typography>
             <Typography variant="body2" style={{ marginBottom: '10px', color: '#bbb' }}>
-            Stay informed about our clinic's availability with detailed open hours for each day of the week.
+              Stay informed about our clinic's availability with detailed open hours for each day of the week.
             </Typography>
             <Typography variant="body2" style={{ marginBottom: '5px', color: '#bbb' }}>
               <Schedule style={{ verticalAlign: 'middle', marginRight: '5px' }} />
@@ -99,6 +107,23 @@ const Footer = () => {
         <Typography variant="body2" style={{ textAlign: 'center', marginTop: '30px', color: '#bbb' }}>
           © 2024 Patient Pulse. All rights reserved.
         </Typography>
+        
+        {/* Scroll to Top Button */}
+        <Fab
+          onClick={scrollToTop}
+          color="primary"
+          aria-label="scroll to top"
+          style={{
+            position: 'fixed',
+            bottom: '20px',
+            right: '20px',
+            zIndex: 1000,
+            backgroundColor: '#1E88E5',
+            boxShadow: '0 3px 5px 2px rgba(33, 150, 243, .3)',
+          }}
+        >
+          <ArrowUpward />
+        </Fab>
       </Container>
     </footer>
   );
