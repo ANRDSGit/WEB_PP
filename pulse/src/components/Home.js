@@ -29,13 +29,13 @@ const newsItems = [
     title: 'The dispensary will be closed on 10/10/2024', 
     date: 'October 1, 2024', 
     content: 'Sorry for the inconvenience.', 
-    image: '/news1.jpg' 
+    image: '/img1.jpg' 
   },
   { 
     title: 'Kindly remember to bring your own bottles to store medication.', 
     date: 'September 15, 2024', 
     content: '', 
-    image: '/news3.jpg' 
+    image: '/img2.jpg' 
   },
 ];
 
@@ -51,6 +51,7 @@ const Hero = () => {
   // State variables for counts
   const [totalCases, setTotalCases] = useState(0);
   const [registeredMembers, setRegisteredMembers] = useState(0);
+  const [yearsExperience] = useState(20); // Constant value for years of experience
 
   // State for reviews
   const [reviews, setReviews] = useState(initialReviews);
@@ -221,6 +222,21 @@ const Hero = () => {
             >
               <Typography variant="h2">{registeredMembers}</Typography>
               <Typography variant="h6">Registered Members</Typography>
+            </Box>
+            <Box
+              sx={{
+                backgroundColor: '#8CF5AFFF',
+                borderRadius: '8px',
+                padding: '20px',
+                boxShadow: 3,
+                textAlign: 'center',
+                flex: 1,
+                mx: 1,
+                animation: 'fadeIn 2s',
+              }}
+            >
+              <Typography variant="h2">{yearsExperience}</Typography>
+              <Typography variant="h6">Years of experience</Typography>
             </Box>
           </Box>
         </Box>

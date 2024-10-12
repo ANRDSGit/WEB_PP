@@ -46,13 +46,13 @@ const Footer = () => {
               <Link href="/" color="inherit" underline="hover">- Home</Link>
             </Typography>
             <Typography variant="body2" style={{ marginBottom: '10px' }}>
-              <Link href="/about" color="inherit" underline="hover">- Appointments</Link>
+              <Link href="/Appointments" color="inherit" underline="hover">- Appointments</Link>
             </Typography>
             <Typography variant="body2" style={{ marginBottom: '10px' }}>
-              <Link href="/services" color="inherit" underline="hover">- About Us</Link>
+              <Link href="/AboutUs" color="inherit" underline="hover">- About Us</Link>
             </Typography>
             <Typography variant="body2" style={{ marginBottom: '10px' }}>
-              <Link href="/contact" color="inherit" underline="hover">- Contact Us</Link>
+              <Link href="/Contact" color="inherit" underline="hover">- Contact Us</Link>
             </Typography>
           </Grid>
 
