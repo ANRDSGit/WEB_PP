@@ -36,6 +36,9 @@ const galleryImages = [
   '/img4.jpg',
   '/img5.jpg',
   '/img6.jpg',
+  '/img6.jpg',
+  '/img6.jpg',
+  '/img6.jpg',
   // Add more image paths as needed
 ];
 
@@ -84,13 +87,15 @@ const AboutUs = () => {
       </Typography>
 
       <Typography variant="body1" sx={{ mb: 4 }}>
-        We are a passionate team dedicated to providing the best service in the industry. Our mission is to help you
-        achieve your goals by offering top-notch solutions tailored to your needs. With years of experience and a 
-        customer-centric approach, we ensure you have the best experience possible.
+      <p>Patient Pulse Ayurvedic Medical Center is a leading institution dedicated to providing holistic healthcare solutions rooted in the ancient science of Ayurveda. At Patient Pulse, we believe in treating not just the symptoms but the individual as a whole, restoring the natural balance of the body, mind, and spirit. Our mission is to help patients achieve optimal health and wellness through time-tested Ayurvedic principles, personalized treatments, and a deep commitment to patient care.</p>
+      <p>With years of expertise in the Ayurvedic medical field, our center offers a wide range of treatments that address various health concerns, from chronic conditions and lifestyle disorders to preventative care and wellness therapies. Our highly skilled and compassionate team of Ayurvedic doctors, therapists, and wellness experts work closely with patients to understand their unique health needs and tailor treatments accordingly. By combining the wisdom of Ayurveda with modern diagnostic methods, we ensure effective and safe healthcare solutions.</p>
+      <p>Our services include personalized consultations, herbal medicine prescriptions, Panchakarma therapies, diet and lifestyle recommendations, yoga and meditation programs, and much more. Whether you are seeking relief from pain, stress management, or a path to rejuvenation, Patient Pulse Ayurvedic Medical Center offers a nurturing environment where every aspect of your well-being is prioritized.</p>
+      <p>We take pride in creating an atmosphere of healing and relaxation, where patients feel cared for and supported throughout their wellness journey. With a focus on natural, plant-based treatments and a deep respect for the body's innate healing capacity, our approach promotes long-term health and harmony.</p>
+      <p>At Patient Pulse, we don’t just treat ailments; we empower individuals to lead healthier, more balanced lives. Let us guide you on a journey toward lasting well-being, backed by the rich heritage of Ayurveda and our unwavering dedication to your health.</p>
       </Typography>
 
       {/* Why Choose Us Section */}
-      <Typography variant="h5" gutterBottom>
+      <Typography variant="h4" gutterBottom>
         Why Choose Us?
       </Typography>
 
@@ -133,7 +138,7 @@ const AboutUs = () => {
       </Grid>
 
       {/* Our Team Section */}
-      <Typography variant="h5" gutterBottom sx={{ mt: 4 }}>
+      <Typography variant="h4" gutterBottom sx={{ mt: 4 }}>
         Our Team
       </Typography>
 
@@ -181,7 +186,7 @@ const AboutUs = () => {
       </Grid>
 
       {/* Gallery Section */}
-      <Typography variant="h5" gutterBottom sx={{ mt: 6 }}>
+      <Typography variant="h4" gutterBottom sx={{ mt: 6 }}>
         Photo Gallery
       </Typography>
 
