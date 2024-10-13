@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Typography, Grid, Link, IconButton, TextField, Button, Fab } from '@mui/material';
-import { Facebook, Twitter, Instagram, EmailOutlined, Schedule, ArrowUpward } from '@mui/icons-material';
+import { Facebook, Twitter, Instagram, Schedule, ArrowUpward } from '@mui/icons-material';
 
 const Footer = () => {
   // Function to scroll to the top of the page
