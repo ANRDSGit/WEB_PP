@@ -9,6 +9,8 @@ import {
   MenuItem,
   InputLabel,
   FormControl,
+  Grid,
+  Paper,
   Box,
 } from '@mui/material';
 import axios from 'axios';
@@ -19,8 +21,8 @@ const SignIn = () => {
     age: '',
     gender: '',
     bloodGroup: '',
-    number:'',
-    email:'',
+    number: '',
+    email: '',
     password: ''
   });
 
@@ -52,117 +54,139 @@ const SignIn = () => {
   };
 
   return (
-    <Container maxWidth="xs" sx={{ mt: 4 }}>
-      <Box
-        sx={{
-          padding: 3,
-          backgroundColor: '#ffffff', // Set background color to white
-          borderRadius: 2, // Rounded corners
-          boxShadow: 3, // Shadow effect
-        }}
-      >
-        <Typography variant="h4" gutterBottom align="center">
-          Sign Up
-        </Typography>
-
-        {error && (
-          <Typography color="error" gutterBottom align="center">
-            {error}
+    <Box
+      sx={{
+        minHeight: '100vh',
+        backgroundImage: 'url(/back5.jpg)', // Path to your background image
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+    >
+      <Container component="main" maxWidth="sm">
+        <Paper elevation={4} sx={{ p: 4, borderRadius: 3, backdropFilter: 'blur(10px)', backgroundColor: 'rgba(255, 255, 255, 0.8)' }}>
+          <Typography variant="h4" align="center" gutterBottom>
+            Create Your Account
           </Typography>
-        )}
+          <Typography variant="body1" align="center" color="textSecondary" gutterBottom>
+            Please fill out the form to sign up.
+          </Typography>
 
-        <form onSubmit={handleSubmit}>
-          <TextField
-            label="Name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            fullWidth
-            required
-            margin="normal"
-          />
+          {error && (
+            <Typography color="error" gutterBottom align="center">
+              {error}
+            </Typography>
+          )}
 
-          <TextField
-            label="Age"
-            name="age"
-            value={formData.age}
-            onChange={handleChange}
-            fullWidth
-            required
-            margin="normal"
-            type="number" // Ensure the age field is a number input
-          />
+          <form onSubmit={handleSubmit}>
+            <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <TextField
+                  label="Name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  fullWidth
+                  required
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  label="Age"
+                  name="age"
+                  value={formData.age}
+                  onChange={handleChange}
+                  fullWidth
+                  required
+                  type="number" // Ensure the age field is a number input
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <FormControl fullWidth required>
+                  <InputLabel id="gender-label">Gender</InputLabel>
+                  <Select
+                    labelId="gender-label"
+                    name="gender"
+                    value={formData.gender}
+                    onChange={handleChange}
+                  >
+                    <MenuItem value="Male">Male</MenuItem>
+                    <MenuItem value="Female">Female</MenuItem>
+                    <MenuItem value="Other">Other</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  label="Blood Group"
+                  name="bloodGroup"
+                  value={formData.bloodGroup}
+                  onChange={handleChange}
+                  fullWidth
+                  required
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  label="Phone Number"
+                  name="number"
+                  value={formData.number}
+                  onChange={handleChange}
+                  fullWidth
+                  required
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  label="Email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  fullWidth
+                  required
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  label="Password"
+                  type="password"
+                  name="password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  fullWidth
+                  required
+                />
+              </Grid>
+            </Grid>
 
-          <FormControl fullWidth margin="normal" required>
-            <InputLabel id="gender-label">Gender</InputLabel>
-            <Select
-              labelId="gender-label"
-              name="gender"
-              value={formData.gender}
-              onChange={handleChange}
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              fullWidth
+              sx={{ mt: 3, py: 1.5 }}
             >
-              <MenuItem value="Male">Male</MenuItem>
-              <MenuItem value="Female">Female</MenuItem>
-            </Select>
-          </FormControl>
+              Sign Up
+            </Button>
 
-          <TextField
-            label="Blood Group"
-            name="bloodGroup"
-            value={formData.bloodGroup}
-            onChange={handleChange}
-            fullWidth
-            required
-            margin="normal"
-          />
-          <TextField
-            label="Number"
-            name="number"
-            value={formData.number}
-            onChange={handleChange}
-            fullWidth
-            required
-            margin="normal"
-          />
-          <TextField
-            label="Email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            fullWidth
-            required
-            margin="normal"
-          />
-
-          <TextField
-            label="Password"
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            fullWidth
-            required
-            margin="normal"
-          />
-
-          <Button
-            type="submit"
-            variant="contained"
-            color="primary"
-            fullWidth
-            sx={{ mt: 2 }}
-          >
-            Sign Up
-          </Button>
-
-          <Typography variant="h8" align="center" gutterBottom>
-          Already have an account?
-            <Button align="center" onClick={() => navigate('/login')}>Login</Button>
-          </Typography>
-
-        </form>
-      </Box>
-    </Container>
+            <Box textAlign="center" sx={{ mt: 2 }}>
+              <Typography variant="body2" color="textSecondary">
+                Already have an account?{' '}
+                <Button
+                  variant="text"
+                  color="primary"
+                  onClick={() => navigate('/login')}
+                >
+                  Login
+                </Button>
+              </Typography>
+            </Box>
+          </form>
+        </Paper>
+      </Container>
+    </Box>
   );
 };
 
