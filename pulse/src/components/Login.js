@@ -67,6 +67,12 @@ const Login = () => {
             >
               Login
             </Button>
+
+          <Typography variant="h8" align="center" gutterBottom>
+            Don't have an account?
+            <Button align="center" onClick={() => navigate('/signin')}>Create an Account</Button>
+          </Typography>
+          
           </Box>
         </form>
       </Paper>

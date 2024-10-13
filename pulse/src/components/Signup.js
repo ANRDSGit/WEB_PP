@@ -116,7 +116,7 @@ const SignIn = () => {
             margin="normal"
           />
           <TextField
-            label="number"
+            label="Number"
             name="number"
             value={formData.number}
             onChange={handleChange}
@@ -125,7 +125,7 @@ const SignIn = () => {
             margin="normal"
           />
           <TextField
-            label="email"
+            label="Email"
             name="email"
             value={formData.email}
             onChange={handleChange}
@@ -154,6 +154,12 @@ const SignIn = () => {
           >
             Sign Up
           </Button>
+
+          <Typography variant="h8" align="center" gutterBottom>
+          Already have an account?
+            <Button align="center" onClick={() => navigate('/login')}>Login</Button>
+          </Typography>
+
         </form>
       </Box>
     </Container>
